@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css">
+  <title>Stand Out | Sign Up</title>
+  <link rel="stylesheet" type="text/css" href="./assets/css/user.css">
+</head>
+
+<body class="scope">
+  <div class="container">
+    <h1 class="logo">Stand Out</h1>
+    <div class="wrapper">
+      <input autofocus="autofocus" id="email" type="email" placeholder="Email">
+      <input autocomplete="off" id="password" type="password" placeholder="Password">
+      <input autocomplete="off" id="password_confirmation" type="password" placeholder="Confirm Password">
+      <p id="error-toast"></p>
+      <input id="submit" class="btn" value="Sign Up">
+    </div>
+    <div class="sub-link">
+      Already have an accout?
+      <a href="/signin">Sign In</a>
+    </div>
+  </div>
+</body>
+
+<script src="./assets/js/jquery.js"></script>
+<script>
+  $(function() {
+    // registration button click event binding
+    $("#submit").click(() => {
+      let email = $("#email").val();
+      let password = $("#password").val();
+      let password_confirmation = $("#password_confirmation").val();
+
+      // check email format
+      let reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+      if (!reg.test(email)) {
+        $("#error-toast").text("Email format has error").show();
+        return;
+      }
+
+      // password less than 6 characters
+      if (password.length < 6) {
+        $("#error-toast").text("Password must be at least 6 characters").show();
+        return;
+      }
+
+      // password doesn't match
+      if (password !== password_confirmation) {
+        $("#error-toast").text("Passwords don't match").show();
+        return;
+      }
+
+      $.post({
+        url: "/graphql",
+        data: {
+          query: `
+            mutation($email: String, $password: String) {
+              users {
+                signup(email: $email, password: $password)
+              }
+            }
+          `,
+          variables: {
+            email,
+            password
+          }
+        },
+        success: ({ data }) => {
+          if (data.users.signup == "success") {
+            // register success, route to homepage
+            $(location).attr("href", "/");
+          } else if (data.users.signup == "hasSigned") {
+            // email has been registered
+            $("#error-toast").text("An account with that email address has already been created").show();            
+          } else {
+            $("#error-toast").text("Something error").show();   
+          }
+        }
+      });
+    });
+  });
+</script>
+</html>

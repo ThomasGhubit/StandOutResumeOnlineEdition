@@ -1,0 +1,10 @@
+[
+  {
+    "name": "apollo",
+    "image": "templates/apollo.png"
+  },
+  {
+    "name": "almada",
+    "image": "templates/almada.png"
+  }
+]

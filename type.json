@@ -1,0 +1,243 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "OBJECT",
+        "name": "RootQuery",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "UserQuery",
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "String",
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "userQueryResult",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "User",
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Boolean",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InfoQuery",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Info",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InfoBasic",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InfoEducation",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InfoEmployment",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "employee",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InfoSkill",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InfoProject",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InfoAward",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InfoActivity",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InfoVolunteering",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "ResumeQuery",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Resume",
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Int",
+        "possibleTypes": null
+      },
+      {
+        "kind": "UNION",
+        "name": "resumeQueryResult",
+        "possibleTypes": [
+          {
+            "name": "Resume"
+          },
+          {
+            "name": "resumeFailType"
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "resumeFailType",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "RootMutation",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "UserMutation",
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "userMutationResult",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InfoMutation",
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "infoMutationResult",
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "InfoInputBasic",
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "InfoInputEducation",
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "InfoInputEmployment",
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "inputEmployee",
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "InfoInputSkill",
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "InfoInputProject",
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "InfoInputAward",
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "InfoInputActivity",
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "InfoInputVolunteering",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "ResumeMutation",
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "resumeMutataionResult",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Schema",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Type",
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "__TypeKind",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Field",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__InputValue",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__EnumValue",
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Directive",
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "__DirectiveLocation",
+        "possibleTypes": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css">
+  <title>Stand Out | Sign In</title>
+  <link rel="stylesheet" type="text/css" href="./assets/css/user.css">
+</head>
+
+<body class="scope">
+  <div class="container">
+    <h1 class="logo">Stand Out</h1>
+    <div class="wrapper">
+      <input autofocus="autofocus" id="email" type="email" placeholder="Email">
+      <input autocomplete="off" id="password" type="password" placeholder="Password">
+      <p id="error-toast"></p>
+      <input id="submit" class="btn" value="Sign In">
+    </div>
+    <div class="sub-link">
+      No accout yet?
+      <a href="/signup">Sign Up</a>
+    </div>
+  </div>
+</body>
+
+<script src="./assets/js/jquery.js"></script>
+<script>
+  $(function() {
+    // submit button click event binding
+    $("#submit").click(() => {
+      let email = $("#email").val();
+      let password = $("#password").val();
+
+      // check email format
+      let reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+      if (!reg.test(email)) {
+        $("#error-toast").text("Email format has error").show();
+        return;
+      }
+
+      // password less than 6 characters
+      if (password.length < 6) {
+        $("#error-toast").text("Password must be at least 6 characters").show();
+        return;
+      }
+
+      $.post({
+        url: "/graphql",
+        data: {
+          query: `
+            query($email: String, $password: String) {
+              users {
+                signin(email: $email, password: $password)
+              }
+            }
+          `,
+          variables: {
+            email,
+            password
+          }
+        },
+        success: ({ data }) => {
+          if (data.users.signin == "success") {
+            // route homepage
+            $(location).attr("href", "/");
+          } else if (data.users.signin == "notFound") {
+            // cannot find user by email
+            $("#error-toast").text("An account with that email address hasn't been created").show();            
+          } else if (data.users.signin == "notMatch") {
+            // password doesn't match with email
+            $("#error-toast").text("Invalid password").show();            
+          }
+        }
+      });
+    });
+  });
+</script>
+</html>

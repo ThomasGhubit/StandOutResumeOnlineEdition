@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>{{pageTitle}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+</head>
+
+<style>
+  body {
+    background-color: #fff;
+    font-family: Oswald !important;
+    margin: 0 35px;
+  }
+
+  .top-header {
+    background-color: rgb(228, 228, 233);
+    border: 10px solid transparent;
+    margin: 0 -35px 15px;
+    padding: 0 10px;
+  }
+
+  .section-1, .section-2, .section-3 {
+    box-sizing: border-box;
+  }
+
+  .section-1 {
+    padding: 0 15px;
+    position: relative;
+    text-align: center;
+  }
+
+  .name {
+    color: rgb(0, 0, 102);
+    font-size: 42px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .occupation {
+    font-size: 24px;
+  }
+
+  .content::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+
+  .section-2 {
+    float: left;
+    padding-left: 15px;
+    padding-right: 20px;
+    position: relative;
+    width: 66.66666667%;
+  }
+
+  .section-3 {
+    float: left;
+    padding: 0 15px;
+    position: relative;
+    width: 33.33333333%;
+  }
+
+  .section-header {
+    color: rgb(0, 0, 102);
+    font-size: 21px;
+    margin-bottom: 5px;
+  }
+
+  .section-header span {
+    font-weight: 700;
+  }
+
+  .section-header-underline {
+    background-color: rgb(0, 0, 102);
+    height: 3px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+  .summary, .employment, .project, .award, .activity, 
+  .volunteering, .contact, .education, .skill {
+    margin-bottom: 7.5px;
+    margin-top: 2.5px;
+  }
+
+  .summary-item, .employment-item,
+  .project-item, .award-item,
+  .activity-item, .volunteering-item,
+  .education-item, .skill-item {
+    font-size: 19.5px;
+    font-weight: 600;
+    margin-bottom: 8.75px;
+    margin-top: 1.25px;
+  }
+
+  .employment-item .employer {
+    font-size: 22.7px;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+
+  .employment-item .employee-info,
+  .project-item .project-info,
+  .award-item .award-info,
+  .activity-item .activity-info,
+  .volunteering-item .volunteering-info,
+  .education-item .education-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .employment-item .employee-info .employee-title,
+  .project-item .project-link {
+    color: rgb(136, 136, 136);
+  }
+
+  .employment-item .employee-desc,
+  .project-item .project-desc,
+  .project-item .project-link,
+  .award-item .award-desc,
+  .activity-item .activity-desc, 
+  .volunteering-item .volunteering-desc,
+  .volunteering-item .volunteering-location,
+  .education-item .education-note,
+  .education-item .education-duration,
+  .skill-item .skill-name {
+    display: block;
+    font-size: 19.5px;
+    font-weight: 500;
+    margin: 2px auto 0;
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  .email-item svg,
+  .phone-item svg,
+  .website-item svg,
+  .location-item svg {
+    margin-right: 2px;
+    width: 14px;
+  }
+</style>
+
+<body>
+  <div class="top-header">
+    <div class="section-1">
+      <div class="name">
+        <span>first</span>
+        <span>last</span>
+      </div>
+      <div class="occupation">
+        Occupation
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="section-2">
+      <div class="summary">
+        <div class="section-header">
+          <span>Summary</span>
+          <div class="section-header-underline"></div>
+        </div>
+        <div class="item-container">
+          <p class="summary-item">123</p>
+          <p class="summary-item">123</p>
+        </div>
+      </div>
+      <div class="employment">
+        <div class="section-header">
+          <span>Employment</span>
+          <div class="section-header-underline"></div>
+        </div>
+        <div class="item-container">
+          <div class="employment-item">
+            <span class="employer">Employer</span>
+            <div class="employee-item">
+              <div class="employee-info">
+                <span class="employee-title">Title</span>
+                <span class="employee-duration">2019-03-26 to 2019-03-27</span>
+              </div>
+              <p class="employee-desc">Description</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project">
+        <div class="section-header">
+          <span>Projects</span>
+          <div class="section-header-underline"></div>
+        </div>
+        <div class="item-container">
+          <div class="project-item">
+            <div class="project-info">
+              <span class="project-name">Name</span>
+              <span class="project-duration">2019-03-26 to 2019-03-27</span>
+            </div>
+            <p class="project-desc">Description</p>
+            <p class="project-link">www.baidu.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="award">
+        <div class="section-header">
+          <span>Awards</span>
+          <div class="section-header-underline"></div>
+        </div>
+        <div class="item-container">
+          <div class="award-item">
+            <div class="award-info">
+              <span class="award-awarder-&-name">Awarder · Award</span>
+              <span class="award-time">2019-03-26</span>
+            </div>
+            <p class="award-desc">Description</p>
+          </div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="section-header">
+          <span>Activities</span>
+          <div class="section-header-underline"></div>
+        </div>
+        <div class="item-container">
+          <div class="activity-item">
+            <div class="activity-info">
+              <span class="activity-title">Title</span>
+              <span class="activity-duration">2019-03-26 to 2019-03-27</span>
+            </div>
+            <p class="activity-desc">Description</p>
+          </div>
+        </div>
+      </div>
+      <div class="volunteering">
+        <div class="section-header">
+          <span>Volunteering</span>
+          <div class="section-header-underline"></div>
+        </div>
+        <div class="item-container">
+          <div class="volunteering-item">
+            <div class="volunteering-info">
+              <span class="volunteering-title">Title · Organization</span>
+              <span class="volunteering-duration">2019-03-26 to 2019-03-27</span>
+            </div>
+            <p class="volunteering-location">Location</p>
+            <p class="volunteering-desc">Description</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-3">
+      <div class="contact">
+        <div class="section-header">
+          <span>Contact</span>
+          <div class="section-header-underline"></div>
+        </div>
+        <div class="item-container">
+          <div class="email-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g>
+                <path fill="none" d="M0 0h24v24H0z"/>
+                <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm9.06 8.683L5.648 6.238 4.353 7.762l7.72 6.555 7.581-6.56-1.308-1.513-6.285 5.439z"/>
+              </g>
+            </svg>
+            <span>Email</span>
+          </div>
+          <div class="phone-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g>
+                  <path fill="none" d="M0 0h24v24H0z"/>
+                  <path d="M21 16.42v3.536a1 1 0 0 1-.93.998c-.437.03-.794.046-1.07.046-8.837 0-16-7.163-16-16 0-.276.015-.633.046-1.07A1 1 0 0 1 4.044 3H7.58a.5.5 0 0 1 .498.45c.023.23.044.413.064.552A13.901 13.901 0 0 0 9.35 8.003c.095.2.033.439-.147.567l-2.158 1.542a13.047 13.047 0 0 0 6.844 6.844l1.54-2.154a.462.462 0 0 1 .573-.149 13.901 13.901 0 0 0 4 1.205c.139.02.322.042.55.064a.5.5 0 0 1 .449.498z"/>
+              </g>
+            </svg>
+            <span>Phone</span>
+          </div>
+          <div class="website-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g>
+                  <path fill="none" d="M0 0h24v24H0z"/>
+                  <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 7H4v9h16v-9zM5 6v2h2V6H5zm4 0v2h2V6H9z"/>
+              </g>
+            </svg>
+            <span>Website</span>
+          </div>
+          <div class="location-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g>
+                  <path fill="none" d="M0 0h24v24H0z"/>
+                  <path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0zM12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+              </g>
+            </svg>
+            <span>Location</span>
+          </div>
+        </div>
+      </div>
+      <div class="education">
+        <div class="section-header">
+          <span>Education</span>
+          <div class="section-header-underline"></div>
+        </div>
+        <div class="item-container">
+          <div class="education-item">
+            <div class="education-info">
+              <span class="education-school">School</span>
+              <div>
+                <span class="education-degree">Degree</span>
+                <span class="education-field">Field</span>
+              </div>
+            </div>
+            <p class="education-duration">2019-03-26 to 2019-03-27</p>
+            <p class="education-note">Note</p>
+          </div>
+        </div>
+      </div>
+      <div class="skill">
+        <div class="section-header">
+          <span>Skills</span>
+          <div class="section-header-underline"></div>
+        </div>
+        <div class="item-container">
+          <div class="skill-item">
+            <span class="skill-group">Group</span>
+            <p class="skill-name">Name</p>
+            <p class="skill-name">Name</p>
+            <p class="skill-name">Name</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

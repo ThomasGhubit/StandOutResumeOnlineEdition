@@ -1,0 +1,29 @@
+@import '~antd/dist/antd.css';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    color: #fff;
+    height: 31px;
+    float: left;
+    font-family: "Varela Round", Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    user-select: none;
+    width: 150px;
+  }
+
+  .user-drop {
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+.sub-header {
+  padding: 0;
+  height: 36px;
+}

@@ -1,0 +1,31 @@
+.template-list {
+  .template-card {
+    float: left;
+    margin: 0 10px;
+    width: 130px;
+    
+    .template-image img {
+      display: block;
+      cursor: pointer;
+    }
+
+    .template-title {
+      margin: 10px 10px;
+      line-height: 26px;
+      height: 26px;
+      width: 220px;
+
+      h3 {
+        width: 170px;
+        float: left;
+        color: #999;
+      }
+
+      a {
+        text-align: right;
+        width: 50px;
+        float: right;
+      }
+    }
+  }
+}

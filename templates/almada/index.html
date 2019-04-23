@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>{{pageTitle}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/assets/css/spin.css">
+</head>
+
+<style>
+  body {
+    background-color: #fff;
+    font-family: Oxygen !important;
+    font-size: 18px;
+    margin: 0 20px;
+  }
+
+  body::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+
+  .section-1, .section-2 {
+    box-sizing: border-box;
+  }
+
+  .section-1 {
+    background-color: rgb(231, 234, 240);
+    float: left;
+    height: 100vh;
+    margin-left: -20px;
+    padding: 0 20px;
+    width: 25%;
+  }
+
+  .section-2 {
+    float: left;
+    margin-left: 15px;
+    padding: 0 15px;
+    width: 75%;
+  }
+
+  .name {
+    font-size: 30px;
+    line-height: 1.1;
+    margin-top: 20px;
+    text-transform: uppercase;
+  }
+
+  .email-item img,
+  .phone-item img,
+  .website-item img,
+  .location-item img {
+    margin-right: 2px;
+    width: 14px;
+  }
+
+  .email-item span,
+  .phone-item span,
+  .website-item span,
+  .location-item span {
+    font-size: 11px;
+  }
+
+  .summary, .employment, .project, .award, .activity, 
+  .volunteering, .contact, .education, .skill {
+    margin-bottom: 7.5px;
+    margin-top: 2.5px;
+  }
+
+  .summary-item, .employment-item,
+  .project-item, .award-item,
+  .activity-item, .volunteering-item,
+  .education-item, .skill-item {
+    font-size: 19.5px;
+    font-weight: 600;
+    margin-bottom: 8.75px;
+    margin-top: 1.25px;
+  }
+
+  .employment-item .employer {
+    font-size: 22.7px;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+
+  .employment-item .employee-info,
+  .project-item .project-info,
+  .award-item .award-info,
+  .activity-item .activity-info,
+  .volunteering-item .volunteering-info,
+  .education-item .education-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .employment-item .employee-info .employee-title,
+  .project-item .project-link {
+    color: rgb(136, 136, 136);
+  }
+
+  .employment-item .employee-desc,
+  .project-item .project-desc,
+  .project-item .project-link,
+  .award-item .award-desc,
+  .activity-item .activity-desc, 
+  .volunteering-item .volunteering-desc,
+  .volunteering-item .volunteering-location,
+  .education-item .education-note,
+  .education-item .education-duration,
+  .skill-item .skill-name {
+    display: block;
+    font-weight: 500;
+    margin: 2px auto 0;
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  .section-header {
+    font-size: 21px;
+    margin-bottom: 5px;
+  }
+
+  .section-header span {
+    color: rgb(77, 137, 255);
+    font-weight: 700;
+    letter-spacing: 0px;
+  }
+
+  .section-header-underline {
+    background-color: rgb(77, 137, 255);
+    height: 3px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+  .summary {
+    margin-bottom: 7.5px;
+    margin-top: 2.5px;
+  }
+
+  .summary .section-header {
+    display: none;
+  }
+
+  .summary .summary-item {
+    margin-bottom: 8.75px;
+    margin-top: 1.25px;
+  }
+
+  .skill-item .skill-group {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .education {
+    margin-top: 20px;
+  }
+
+  #mask {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+  }
+
+  @media (max-width: 420px) {
+    body {
+      font-size: 3.5px;
+      margin: 0 4px;
+    }
+
+    .section-1 {
+      margin-left: -4px;
+      padding: 0 4px;
+      width: 38%;
+    }
+
+    .section-2 {
+      margin-left: 3px;
+      padding: 0 3px;
+      width: 62%;
+    }
+
+    .name {
+      font-size: 5.5px;
+      margin-top: 4px;
+    }
+
+    .email-item img,
+    .phone-item img,
+    .website-item img,
+    .location-item img {
+      margin-right: 0.1px;
+      width: 3px;
+    }
+
+    .email-item span,
+    .phone-item span,
+    .website-item span,
+    .location-item span {
+      font-size: 1.5px;
+    }
+
+    .summary, .employment, .project, .award, .activity, 
+    .volunteering, .contact, .education, .skill {
+      margin-bottom: 1.5px;
+      margin-top: 0.5px;
+    }
+
+    .summary-item, .employment-item,
+    .project-item, .award-item,
+    .activity-item, .volunteering-item,
+    .education-item, .skill-item {
+      font-size: 4px;
+      margin-bottom: 2px;
+      margin-top: 0.5px;
+    }
+
+    .employment-item .employer {
+      font-size: 4.5px;
+      margin-bottom: 0.1px;
+    }
+
+    .employment-item .employee-desc,
+    .project-item .project-desc,
+    .project-item .project-link,
+    .award-item .award-desc,
+    .activity-item .activity-desc, 
+    .volunteering-item .volunteering-desc,
+    .volunteering-item .volunteering-location,
+    .education-item .education-note,
+    .education-item .education-duration,
+    .skill-item .skill-name {
+      margin: 0.1px auto 0;
+    }
+
+    .section-header {
+      font-size: 4px;
+      margin-bottom: 1px;
+    }
+
+    .section-header-underline {
+      height: .5px;
+      margin-bottom: 1px;
+    }
+
+    .summary {
+      margin-bottom: 1.5px;
+      margin-top: .5px;
+    }
+
+    .summary .summary-item {
+      margin-bottom: 1.5px;
+      margin-top: 0.2px;
+    }
+
+    .education {
+      margin-top: 4px;
+    }
+  }
+</style>
+
+<body>
+  <div class="section-1">
+    <div class="name">
+      <span>{{firstName}}</span>
+      <span>{{lastName}}</span>
+    </div>
+    <div class="occupation">
+      {{occupation}}
+    </div>
+    <div class="contact">
+      <div class="item-container">
+        {{{email}}}
+        {{{phone}}}
+        {{{website}}}
+        {{{location}}}
+      </div>
+    </div>
+    {{{summary}}}
+    {{{skill}}}
+  </div>
+  <div class="section-2">
+    {{{education}}}
+    {{{employment}}}
+    {{{project}}}
+    {{{award}}}
+    {{{activity}}}
+    {{{volunteering}}}
+  </div>
+  <div id="mask">
+  </div>
+</body>
+
+<script src="/assets/js/html2pdf.js"></script>
+<script src="/assets/js/spin.js"></script>
+<script>
+  function savePDF() {
+    var spinner = new Spinner().spin();
+    var target = document.querySelector('body');
+    var mask = document.getElementById('mask');
+
+    target.appendChild(spinner.el);
+    mask.style.display = 'block';
+
+    let opt = {
+      filename: 'resume.pdf',
+      image: { type: 'png', quality: 0.98 },
+      html2canvas:  { scale: 4 },
+      jsPDF: { format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(target).save().then(function() {
+      spinner.stop();
+      mask.style.display = 'none';
+    });
+  }
+</script>
+
+</html>

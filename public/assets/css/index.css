@@ -1,0 +1,141 @@
+body {
+  color: #333;
+  font-family: 'Varela Round',sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;  
+  margin: 0;
+}
+
+h1 {
+  font-size: 80px;
+  margin-bottom: 10px;
+  margin-top: 0;
+  padding: 0;
+}
+
+h4 {
+  font-family: "Open Sans",sans;
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 0;
+  padding: 0;
+}
+
+a {
+  color: #D5E7E7;
+  text-decoration: none;
+}
+
+.container {
+  background-color: #eee;
+  color: inherit;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 2.1428571435;
+  margin-bottom: 30px;
+  padding: 30px;
+}
+
+.wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 970px;
+}
+
+.btn {
+  background-color: #e69400;
+  border: 0;
+  border-color: #b27300;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26), 0 2px 10px 0 rgba(0,0,0,.16);
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  margin: 15px 0;
+  padding: 6px 12px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.intro {
+  background-color: #2e8686;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.sign-in {
+  background-color: #439292;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.sign-in p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.features {
+  background-color: #eee;
+  margin: 0;
+  padding-bottom: 48px;
+  padding-top: 24px;
+}
+
+.features h2 {
+  text-align: center;
+  margin: 0;
+}
+
+.feature-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.feature-list-item {
+  align-items: center;
+  display: flex;
+}
+
+.feature-list-item svg {
+  height: 24px;
+  margin-right: 12px;
+  width: 24px;
+}
+
+.mission {
+  background-color: #439292;
+  color: #fff;
+  font-family: "Open Sans",sans;
+  font-size: 16px;
+  margin: 0;
+  padding: 30px 60px;
+}
+
+.mission p {
+  margin: 0;
+}
+
+footer {
+  background-color: #f8f8f8;
+  border: 1px solid #e7e7e7;
+  border-radius: 0!important;
+  line-height: 50px;
+  margin-bottom: 0;
+  min-height: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: relative;
+  text-align: center;
+}
