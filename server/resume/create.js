@@ -8,7 +8,7 @@ const createResume = async (id, templateName, model) => {
   const templateFile = path.resolve(__dirname, `../../templates/${templateName}/index.html`);
   const resumeFolder = path.resolve(__dirname, '../../resumes');
   if (!fs.existsSync(resumeFolder)) {
-    fs.mkdirSync(resumeFolder);
+    fs.mkdirSync(resumeFolder); 
   }
 
   // create resume html

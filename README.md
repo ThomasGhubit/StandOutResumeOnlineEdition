@@ -1,10 +1,10 @@
 # Stand Out
 
-简历编辑，分享，展示网站
+Resume editting, sharing, publishing
 
-* 基于 React + Koa 开发
-* 数据持久化采用 Mongo + Mongoose
-* 采用 GraphQL
+* based on React + Koa
+* data persistence Mongo + Mongoose
+*  GraphQL
 
 ## 环境
 
