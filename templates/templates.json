@@ -6,5 +6,9 @@
   {
     "name": "almada",
     "image": "templates/almada.png"
+  },
+  {
+    "name": "urbana",
+    "image": "templates/urbana.png"
   }
 ]
