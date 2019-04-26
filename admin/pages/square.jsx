@@ -130,7 +130,7 @@ export default class Square extends Component {
                               hoverable
                               bordered={false}
                               cover={iframe}
-                              actions={[<p style={{marginBottom: 0}} onClick={handelClick}><Icon type="stop" /> Retieve</p>]}
+                              actions={[<p style={{marginBottom: 0}} onClick={handelClick}><Icon type="stop" /> UnPublish </p>]}
                             >
                               <a href={resume.path} target="_blank">
                                 <Meta
