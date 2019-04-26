@@ -29,7 +29,7 @@ const resumeQueryResult = new GraphQLUnionType({
 const ResumeQuery = new GraphQLObjectType({
   name: 'ResumeQuery',
   fields: {
-    // 获取登录用户所有的简历信息
+    // retrive all user information
     resumes: {
       type: GraphQLList(resumeGraphQLType),
       resolve(parent, args, ctx) {
@@ -40,8 +40,7 @@ const ResumeQuery = new GraphQLObjectType({
         });
       }
     },
-    // 获取登录用户指定的简历信息
-    // 默认为最近更新的简历信息
+    // retrieve user resume, default most recent updated resuem
     resume: {
       type: resumeQueryResult,
       args: {
@@ -50,7 +49,7 @@ const ResumeQuery = new GraphQLObjectType({
       async resolve(parent, args, ctx) {
         let info;
         if (!args.infoId || args.infoId == "") {
-          // 获取最近更新的信息
+          // retrieve most recent infomation
           const infos = await Info.find({
             userId: ctx.session.userId
           }).sort({
@@ -67,13 +66,13 @@ const ResumeQuery = new GraphQLObjectType({
 
         let infoId = args.infoId ? args.infoId : info._id;
 
-        // 获取对应的简历
+        // find corresponding resume
         let resume = await Resume.findOne({
           infoId: infoId,
           userId: ctx.session.userId
         });
 
-        // 由于简历可能未创建或者过期，所以可能失败
+        // return fail when resume is empty or expired
         if (resume == null) {
           return {
             failType: 1,
@@ -126,15 +125,14 @@ const resumeMutationResult = new GraphQLEnumType({
 const ResumeMutation = new GraphQLObjectType({
   name: "ResumeMutation",
   fields: {
-    // 获取指定信息的简历并进行必要的更新或创建
-    // 如果 infoId 为空，默认获取最近更新的简历
+    // if infoId empty，default retrieve most recent updated resume
     resume: {
       type: resumeMutationResult,
       args: {
         infoId: { type: GraphQLString },
       },
       async resolve(parent, args, ctx) {
-        // 获取对应的简历与信息
+        // retrieve resume information
         let resume = await Resume.findOne({
           infoId: args.infoId,
           userId: ctx.session.userId
@@ -144,10 +142,10 @@ const ResumeMutation = new GraphQLObjectType({
           userId: ctx.session.userId
         });
 
-        // 信息从未创建过简历
+        // if resume is never created
         if (resume == null) {
-          // 创建对应的简历文件
-          // 默认模板 apollo
+          // create resume
+          // default template apollo
           await createResume(args.infoId, 'apollo', info);
           resume = await Resume.create({
             userId: ctx.session.userId,
@@ -160,9 +158,9 @@ const ResumeMutation = new GraphQLObjectType({
             tags: []
           });
         } 
-        // 检查简历是否具有时效性
+        // check resume updating time
         else if (resume.updateDate < info.updateDate && info.edited) {
-          // 更新对应的简历文件
+          // update resume
           await createResume(args.infoId, resume.template, info);
           resume.updateDate = info.updateDate;
           await resume.save();
@@ -204,7 +202,7 @@ const ResumeMutation = new GraphQLObjectType({
         tags: { type: GraphQLList(GraphQLString) }
       },
       async resolve(parent, args, ctx) {
-        // 管理员有权限直接撤下公开
+        // admin has the authority to unpublish a resume
         let resume = !ctx.session.isAdmin 
           ? await Resume.findOne({
             infoId: args.infoId,
@@ -220,7 +218,7 @@ const ResumeMutation = new GraphQLObjectType({
         let removed_tags = old_tags.filter((tag) => args.tags.indexOf(tag) == -1);
         let added_tags = args.tags.filter((tag) => old_tags.indexOf(tag) == -1);
 
-        // 删除掉的标签需要在使用量减一
+        // remove tag
         removed_tags.forEach(async (tagName) => {
           let tag = await Tag.findOne({
             name: tagName
@@ -228,13 +226,12 @@ const ResumeMutation = new GraphQLObjectType({
           tag.total -= 1;
           await tag.save();
         });
-        // 新增的标签需要在使用量加一
+        // add new tag
         added_tags.forEach(async (tagName) => {
           let tag = await Tag.findOne({
             name: tagName
           });
 
-          // 全新的标签需要创建
           if (tag == null) {
             await Tag.create({
               name: tagName,
@@ -270,7 +267,7 @@ const ResumeMutation = new GraphQLObjectType({
 
         let out = new Date();
 
-        // 该分享码已经被其他用户占用且有效
+        // shareId is occupied
         while(share != null && share.infoId != args.infoId && share.out > out) {
           shareId = ID();
           share = await Share.findOne({
@@ -278,10 +275,10 @@ const ResumeMutation = new GraphQLObjectType({
           });
         }
 
-        // 设置三天后过期
+        // three day outdated
         out.setDate(out.getDate() + 3);
 
-        // 获得了一个全新的分享码
+        // create a new shareId
         if (share == null) {
           share = await Share.create({
             shareId,
@@ -291,7 +288,7 @@ const ResumeMutation = new GraphQLObjectType({
 
           if (share == null) return "";
         } 
-        // 虽然是一个旧的分享码，但是该分享码已失效
+        // shareId is outdated
         else {
           share.infoId = args.infoId;
           share.out = out;

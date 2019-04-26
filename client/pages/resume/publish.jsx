@@ -187,7 +187,7 @@ export default class PublishButton extends Component {
                     onCancel={this.hideTag}
                   >
                     <div style={{display: 'inline-block'}}>
-                      {/* 把用户以前设置的标签放在最上面，便于用户重新选择 */}
+                      {}
                       {data.resumes.resume.tags.map((tag) => {
                         return (
                           <CheckableTag
@@ -199,7 +199,7 @@ export default class PublishButton extends Component {
                           </CheckableTag>
                         );
                       })}
-                      {/* 要去重 */}
+                      {}
                       {hots.filter((tag) => (data.resumes.resume.tags.indexOf(tag) == -1)).map((tag) => {
                         return (
                           <CheckableTag

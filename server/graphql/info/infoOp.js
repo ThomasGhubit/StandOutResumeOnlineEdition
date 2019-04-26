@@ -11,7 +11,7 @@ const { deleteFile } = require('../../controller/util');
 const InfoQuery = new GraphQLObjectType({
   name: 'InfoQuery',
   fields: {
-    // 返回当前登录用户所有的信息，并根据更新时间降序排列
+    // return curent user all information, sort based on time
     infos: {
       type: GraphQLList(InfoType),
       resolve(parent, args, ctx) {
@@ -22,7 +22,7 @@ const InfoQuery = new GraphQLObjectType({
         });
       }
     },
-    // 返回当前登录用户所指定的信息
+    // return user information
     info: {
       type: InfoType,
       args: {
@@ -38,7 +38,7 @@ const InfoQuery = new GraphQLObjectType({
   }
 });
 
-// 信息操作返回结果
+// return value of result
 const infoMutationResult = new GraphQLEnumType({
   name: "infoMutationResult",
   values: {
@@ -50,7 +50,7 @@ const infoMutationResult = new GraphQLEnumType({
 const InfoMutation = new GraphQLObjectType({
   name: "InfoMutation",
   fields: {
-    // 新增简历信息
+    // add new resume information
     addInfo: {
       type: infoMutationResult,
       args: {
@@ -69,7 +69,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 基本信息编辑
+    // basic information editing
     editBasic: {
       type: infoMutationResult,
       args: {
@@ -93,7 +93,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 总结编辑
+    // summary editing
     editSummary: {
       type: infoMutationResult,
       args: {
@@ -117,7 +117,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 学历编辑
+    // education editing
     editEducation: {
       type: infoMutationResult,
       args: {
@@ -141,7 +141,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 就业编辑
+    // employment editing
     editEmployment: {
       type: infoMutationResult,
       args: {
@@ -165,7 +165,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 技能编辑
+    // skill editing
     editSkill: {
       type: infoMutationResult,
       args: {
@@ -189,7 +189,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 项目编辑
+    // project editing
     editProject: {
       type: infoMutationResult,
       args: {
@@ -213,7 +213,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 获奖编辑
+    // award editing
     editAward: {
       type: infoMutationResult,
       args: {
@@ -237,7 +237,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 活动编辑
+    // activity editing
     editActivity: {
       type: infoMutationResult,
       args: {
@@ -261,7 +261,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 志愿编辑
+    // volunteer editing
     editVolunteering: {
       type: infoMutationResult,
       args: {
@@ -285,10 +285,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 修改信息更新时间但是不修改实际信息
-    // 这里是为了实现 ReEdit 不传递信息即可实现重新编辑
-    // 点击 ReEdit 后，会将信息更新时间修改为最新，但是 edited 设置为 false
-    // 根据更新信息和 edited 双保险来保证简历不会冗余重新渲染
+    // update the resume without sending the message
     updateInfoDate: {
       type: infoMutationResult,
       args: {
@@ -333,8 +330,7 @@ const InfoMutation = new GraphQLObjectType({
         return 0;
       }
     },
-    // 注意不仅会删除 info 还会将关联的 resume 删除
-    // 要删除对应的 resume 文件
+    // delete corresponding resume file
     deleteInfo: {
       type: infoMutationResult,
       args: {
@@ -353,7 +349,7 @@ const InfoMutation = new GraphQLObjectType({
         });
         if (resume == null) return 1;
 
-        // 删除对应的文件，要加上文件后缀
+        // delete file with suffix
         await deleteFile(resume.path + '.html');
 
         const resumeResult = await Resume.deleteOne({
