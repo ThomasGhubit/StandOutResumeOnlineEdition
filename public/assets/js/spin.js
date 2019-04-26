@@ -44,6 +44,7 @@ var Spinner = /** @class */ (function () {
         this.el = document.createElement('div');
         this.el.className = this.opts.className;
         this.el.setAttribute('role', 'progressbar');
+        this.el.setAttribute('data-html2canvas-ignore', 'true');
         css(this.el, {
             position: this.opts.position,
             width: 0,
